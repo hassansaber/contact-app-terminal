@@ -1,0 +1,23 @@
+{
+  "name": "contact-app-terminal",
+  "version": "1.0.0",
+  "description": "this app will use process object and fs module in nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hassansaber/contact-app-terminal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hassansaber/contact-app-terminal/issues"
+  },
+  "homepage": "https://github.com/hassansaber/contact-app-terminal#readme",
+  "devDependencies": {
+    "@types/node": "^18.7.9"
+  }
+}

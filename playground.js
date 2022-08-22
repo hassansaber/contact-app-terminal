@@ -38,3 +38,10 @@ switch (command) {
     console.log("command not valid");
     break;
 }
+//-------------------------------------------
+
+//create a command
+yargs.command({
+  command: "create", //name
+  describe: "[create new contact]", // info
+});

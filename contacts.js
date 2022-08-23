@@ -1,3 +1,4 @@
+
 const fs = require("fs");
 const chalk = require("chalk");
 //--------------------------------------------------------
@@ -8,12 +9,24 @@ const addContact = (fullname, phone, email) => {
 
   //check same contact
   const duplicateContact = contacts.find(
-    (contact) => contact.fullname === fullname
+    (contact) =>
+      contact.fullname === fullname ||
+      contact.phone === phone ||
+      contact.email === email
   );
+
+  //set id for contacts
+  // let id = 1
+  // contacts.
+  //   id += 1
+
+
+
 
   if (!duplicateContact) {
     //add contact to json
-    contacts.push({ fullname, email, phone });
+    contacts.push({ fullname, phone, email });
+    saveContacts(contacts);
     console.log(chalk.green("contact saved"));
   } else {
     console.log(chalk.red("contact already exist"));
@@ -30,6 +43,12 @@ const loadContacts = () => {
     console.log(err);
     return [];
   }
+};
+
+//save to json
+const saveContacts = (contacts) => {
+  const stringContacts = JSON.stringify(contacts);
+  fs.writeFileSync("contacts/contacts.json", stringContacts);
 };
 
 //DRY method

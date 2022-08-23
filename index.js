@@ -16,22 +16,22 @@ yargs.command({
       type: "string", // set type
       alias: "f", //set acronym -f
     },
-    phone: {
-      describe: "person phone number",
-      demandOption: true,
-      type: "number",
-      alias: "p",
-    },
     email: {
       describe: "person email address",
       demandOption: true,
       type: "string",
       alias: "e",
     },
+    phone: {
+      describe: "person phone number",
+      demandOption: true,
+      type: "number",
+      alias: "p",
+    },
   },
   //func ==> what u do with data received from flags
-  handler({ fullname, email, phone }) {
-    addContact(fullname, email, phone);
+  handler({ fullname, phone, email }) {
+    addContact(fullname, phone, email);
   },
 });
 

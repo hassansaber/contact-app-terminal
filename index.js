@@ -1,12 +1,18 @@
 const yargs = require("yargs");
-const { addContact } = require("./contacts");
+      const {deleteContact ,addContact,contactsList, } = require("./contacts");
+const chalk = require('chalk');
+const { alias } = require("yargs");
 //---------------------------------------------------
+
+yargs.scriptName(chalk.yellow(`[CONTACT MANAGER]`))
+yargs.usage(`$0 ${chalk.red('<command>')} ${chalk.green('[args]')}`)
+yargs.version("1.0.8");
 
 //create a command
 yargs.command({
-  command: "create", //name
+  command:  chalk.cyan("create"), //name 
   aliases: ["c", "cr"], // set acronyms
-  describe: "[create new contact]", // info
+  describe: chalk.green('[create new contact]'), // info
   builder: {
     //build flag
     fullname: {
@@ -34,6 +40,41 @@ yargs.command({
     addContact(fullname, phone, email);
   },
 });
+
+
+//listing contacts
+yargs.command({
+  command: chalk.cyan(`list`),
+  aliases: ['l'],
+  describe:  `${chalk.green('[list of all contacts]')}`,
+  handler(){
+    contactsList()
+  }
+  
+})
+
+//remove single contact by fullname 
+yargs.command({
+  command: chalk.cyan(`remove`),
+  aliases: ['r'],
+  describe:  `${chalk.green('[remove person from contacts list]')}`,
+  builder: {
+    fullname: {
+      describe: 'person full name',
+      alias: 'f',
+      demandOption: true,
+      type: 'string'
+    }
+    
+  },
+  handler({fullname}){
+    deleteContact(fullname)
+  }
+  
+
+
+})
+
 
 yargs.parse(); //it returns args --> so we can always use them
 
